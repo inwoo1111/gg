@@ -1,0 +1,30 @@
+# 초등학생도 쉽게 따라하는 간단 데이터 분석 프로그램
+
+import pandas as pd                     # 데이터 분석을 위한 pandas 불러오기
+import matplotlib.pyplot as plt         # 그래프 그리기 위한 matplotlib 불러오기
+
+# 1. 월별 용돈 데이터 준비
+money = {
+    '월': ['1월', '2월', '3월', '4월', '5월'],
+    '용돈': [63782, 32923, 63814, 13000, 12500]
+}
+
+df = pd.DataFrame(money)    # 표로 변환
+print(df)                   # 데이터 미리보기
+
+# 2. 간단한 데이터 분석
+최대용돈 = df['용돈'].max()     # 가장 많이 받은 달
+최소용돈 = df['용돈'].min()     # 가장 적게 받은 달
+평균용돈 = df['용돈'].mean()    # 평균 용돈
+
+print(f'가장 많이 받은 달: {최대용돈}원')
+print(f'가장 적게 받은 달: {최소용돈}원')
+print(f'평균 용돈: {평균용돈:.0f}원')
+
+# 3. 그래프로 시각화
+plt.plot(df['월'], df['용돈'], marker='o')     # 선 그래프 그리기
+plt.title('월별 용돈 변화')
+plt.xlabel('월')
+plt.ylabel('받은 용돈(원)')
+plt.grid()
+plt.show()
